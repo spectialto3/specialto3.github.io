@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>临沂柳琴戏 - 柳韵传声社会实践团</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+        }
+        
+        :root {
+            --primary: #a52a2a;
+            --secondary: #d4af37;
+            --dark: #1a1a1a;
+            --light: #f8f0e0;
+            --accent: #8b0000;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f0e0"/><path d="M0,0 Q50,30 100,0 T100,100 T0,100 T0,0" fill="%23f0e6d0" opacity="0.3"/></svg>');
+            background-size: 200px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(to right, var(--dark), var(--accent));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,5 80,20 T80,80 T20,80 T20,20" fill="none" stroke="%23d4af37" stroke-width="0.5" opacity="0.2"/></svg>');
+            background-size: 200px;
+            opacity: 0.3;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* 内容区域 */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h2::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 30px auto 0;
+            color: #555;
+        }
+        
+        /* 剧目展示 */
+        .plays-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .play-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .play-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .play-img {
+            height: 200px;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .play-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .play-card:hover .play-img img {
+            transform: scale(1.05);
+        }
+        
+        .play-img::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 70%, rgba(0,0,0,0.8));
+        }
+        
+        .play-content {
+            padding: 20px;
+        }
+        
+        .play-content h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .play-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .play-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+        
+        /* 图片展示 */
+        .gallery {
+            background: linear-gradient(to bottom, #faf5e9, #f8f0e0);
+            padding: 80px 0;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 280px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 70%, rgba(0,0,0,0.7));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            z-index: 2;
+            transition: bottom 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            bottom: 0;
+        }
+        
+        /* 视频展示 */
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-player {
+            height: 200px;
+            background: var(--dark);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .video-player img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-player::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 70%, rgba(0,0,0,0.8));
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 175, 55, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .play-icon:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(212, 175, 55, 1);
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .video-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* 关于部分 */
+        .about {
+            background: linear-gradient(to bottom, #f8f0e0, #f0e6d0);
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .member {
+            background: rgba(165, 42, 42, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #d4af37, #a52a2a);
+            color: white;
+            padding: 20px;
+        }
+        
+        .team-logo {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: linear-gradient(to right, var(--dark), var(--accent));
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow: auto;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+ 
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;d'f'd'f
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .close-btn:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+        
+        /* 图片集导航 */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(212, 175, 55, 0.8);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        /* 缩略图导航 */
+        .thumbnail-container {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 5;
+        }
+        
+        .thumbnail {
+            width: 60px;
+            height: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            opacity: 1;
+            border-color: var(--secondary);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .thumbnail {
+                width: 40px;
+                height: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .thumbnail-container {
+                gap: 5px;
+            }
+            
+            .thumbnail {
+                width: 30px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-theater-masks"></i>
+                </div>
+                <h1>临沂<span>柳琴戏</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#plays">经典剧目</a></li>
+                    <li><a href="#gallery">精彩剧照</a></li>
+                    <li><a href="#videos">视频欣赏</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="container">
+            <h2>传承非物质文化遗产，弘扬临沂柳琴戏</h2>
+            <p>柳琴戏，又称"拉魂腔"，是山东临沂地区极具代表性的地方戏曲剧种，以其独特的唱腔、优美的音乐和生动的表演而闻名，2006年被列入国家级非物质文化遗产名录。</p>
+            <a href="#plays" class="btn">探索经典剧目</a>
+        </div>
+    </section>
+
+    <!-- 经典剧目 -->
+    <section class="section" id="plays">
+        <div class="container">
+            <div class="section-header">
+                <h2>经典剧目</h2>
+                <p>柳琴戏历史悠久，剧目丰富，题材广泛，既有传统历史剧，也有现代生活剧</p>
+            </div>
+            <div class="plays-container">
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="拾棉花.jpg" alt="拾棉花剧照">
+                    </div>
+                    <div class="play-content">
+                        <h3>拾棉花</h3>
+                        <p>该剧讲述了农村姑娘在棉花丰收季节的劳动生活，展现了劳动人民的智慧和勤劳，是柳琴戏的代表作之一。</p>
+                        <span class="play-tag">传统剧目</span>
+                    </div>
+                </div>
+                
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="喝面叶.webp" alt="喝面叶剧照">
+                    </div>
+                    <div class="play-content">
+                        <h3>喝面叶</h3>
+                        <p>一部富有生活气息的小戏，通过夫妻间的小矛盾展现农村生活的乐趣，唱腔优美，表演生动。</p>
+                        <span class="play-tag">生活喜剧</span>
+                    </div>
+                </div>
+                
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="灵堂花烛.jpg" alt="灵堂花烛剧照">
+                    </div>
+                    <div class="play-content">
+                        <h3>灵堂花烛</h3>
+                        <p>传统悲情剧目，讲述了一个感人至深的爱情故事，展现了柳琴戏在表现悲剧情感方面的独特魅力。</p>
+                        <span class="play-tag">历史悲剧</span>
+                    </div>
+                </div>
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="状元打更.avif" alt="状元打更">
+                    </div>
+                    <div class="play-content">
+                        <h3>状元打更</h3>
+                        <p>讽刺喜剧，落魄状元被迫打更，讽刺世态炎凉与科举虚妄，最终善恶有报团圆收场，融市井幽默与批判于一体。</p>
+                        <span class="play-tag">讽刺喜剧</span>
+                    </div>
+                </div>
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="皮秀英四告.avif" alt="皮秀英四告">
+                    </div>
+                    <div class="play-content">
+                        <h3>皮秀英四告</h3>
+                        <p>公案剧，弱女子皮秀英四次击鼓鸣冤，对抗官场黑暗与强权压迫，以高亢悲腔塑造坚韧女性形象，揭露司法不公。</p>
+                        <span class="play-tag">公案剧</span>
+                    </div>
+                </div>
+                
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="闹书房.avif" alt="闹书房">
+                    </div>
+                    <div class="play-content">
+                        <h3>闹书房</h3>
+                        <p>书生夜读遇狐仙幻化少女纠缠，人妖殊途引发荒诞闹剧。以谐谑手法讽刺迂腐书生，讴歌真情超越礼教，唱腔轻快融入民间小调。</p>
+                        <span class="play-tag">奇幻爱情</span>
+                    </div>
+                </div>
+
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="金镯玉环记.avif" alt="金镯玉环记">
+                    </div>
+                    <div class="play-content">
+                        <h3>金镯玉环记</h3>
+                        <p>才子佳人因金镯玉环定情，历经战乱信物错位，最终凭信物破镜重圆。歌颂忠贞守信，情节跌宕贯穿悲欢离合，凸显“信物”的象征力量。</p>
+                        <span class="play-tag">姻缘传奇</span>
+                    </div>
+                </div>
+
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="金玉奴.avif" alt="金玉奴">
+                    </div>
+                    <div class="play-content">
+                        <h3>金玉奴</h3>
+                        <p>乞丐之女金玉奴雪夜救书生莫稽，反遭高中后的夫君推坠江中。包公智审铡负心郎，揭露封建等级之恶，以“棒打薄情”强化善恶报应主题。</p>
+                        <span class="play-tag">公案悲剧</span>
+                    </div>
+                </div>
+
+                <div class="play-card">
+                    <div class="play-img">
+                        <img src="小姑贤.jpg" alt="小姑贤剧照">
+                    </div>
+                    <div class="play-content">
+                        <h3>小姑贤</h3>
+                        <p>家庭伦理剧，通过婆媳、姑嫂关系展现传统家庭伦理，宣扬孝道和家庭和睦的传统美德。</p>
+                        <span class="play-tag">家庭伦理</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精彩剧照 -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>精彩剧照</h2>
+                <p>欣赏柳琴戏精美的服饰、妆容和舞台艺术</p>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item" data-gallery="performance">
+                    <img src="舞台/1.jpg" alt="舞台表演">
+                    <div class="gallery-caption">
+                        <h4>舞台表演</h4>
+                        <p>舞台上的精彩照片</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-gallery="makeup">
+                    <img src="角色百态/7.png" alt="妆容细节">
+                    <div class="gallery-caption">
+                        <h4>角色百态</h4>
+                        <p>柳琴戏演员的精致妆容</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-gallery="instruments">
+                    <img src="乐器/1.jpg" alt="乐器演奏">
+                    <div class="gallery-caption">
+                        <h4>乐器演奏</h4>
+                        <p>土琵琶——柳叶琴</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-gallery="backstage">
+                    <img src="公众号头像.jpg" alt="柳韵传声">
+                    <div class="gallery-caption">
+                        <h4>柳韵传声</h4>
+                        <p>实践团队线下活动实拍</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 视频欣赏 -->
+    <section class="section" id="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2>视频欣赏</h2>
+                <p>观看柳琴戏精彩演出片段，感受传统艺术的魅力</p>
+                
+            </div>
+            <div class="videos-container">
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1ij411c76X?t=2.1">
+                        <img src="拾棉花.jpg" alt="拾棉花视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《拾棉花》经典片段</h3>
+                        <p>柳琴戏经典剧目《拾棉花》精彩片段。展现农家姑娘劳动嬉戏的欢乐场景，歌颂勤劳乐观的乡土生活，充满幽默明快的风情。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1ZA411M7u8?t=1.2">
+                        <img src="梁山伯与祝英台.avif" alt="梁山伯与祝英台视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《梁山伯与祝英台》经典片段</h3>
+                        <p>《梁山伯与祝英台》通过"化蝶"的凄美爱情，展现封建礼教下青年男女的抗争，歌颂生死不渝的真情与自由意志。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1QJ411D7Eh?t=1.4">
+                        <img src="小姑贤.jpg" alt="小姑贤视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《小姑贤》经典片段</h3>
+                        <p>柳琴戏经典剧目《小姑贤》精彩片段。《小姑贤》通过婆媳矛盾和小姑调解，展现家庭伦理，倡导和谐孝道，突出女性智慧，体现柳琴戏的生动诙谐。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1QJ411D7Eh?t=1.4">
+                        <img src="喝面叶.webp" alt="喝面叶视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《喝面叶》经典片段</h3>
+                        <p>柳琴戏经典剧目《喝面叶》精彩片段。《喝面叶》讲述一对小夫妻因生活琐事拌嘴又和好的故事，展现夫妻生活情趣，通过幽默争执传递包容与恩爱，体现民间智慧与朴实情感。</p>
+                    </div>
+                </div> 
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1fg4y1T7Fa?t=1.0">
+                        <img src="灵堂花烛.jpg" alt="灵堂花烛视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《灵堂花烛》经典片段</h3>
+                        <p>《灵堂花烛》通过阴差阳错的冥婚闹剧，展现封建婚姻的荒诞，讽刺旧俗的同时暗含对真情的歌颂。</p>
+                    </div>
+                </div> 
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1qh4y1W7mX?t=1.3">
+                        <img src="三击掌.avif" alt="三击掌视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《三击掌》经典片段</h3>
+                        <p>《三击掌》通过父女决裂的激烈冲突，展现封建门第观念与自由意志的对立，歌颂王宝钏坚守爱情的勇气。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1Vi4y1T7nf?t=0.7">
+                        <img src="金玉奴.avif" alt="金玉奴视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《金玉奴》经典片段</h3>
+                        <p>《金玉奴》通过乞丐之女救助负心书生反遭抛弃的悲剧，揭露封建等级制度的残酷，批判忘恩负义的人性之恶。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1WM411L7yK?t=1.3">
+                        <img src="闹书房.avif" alt="闹书房视频">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《闹书房》经典片段</h3>
+                        <p>《闹书房》通过书生与狐仙的奇幻纠葛，展现人妖殊途的荒诞与情劫，讽刺迂腐礼教，讴歌真情自由。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1aU4y1z7rY?t=1.7">
+                        <img src="金镯玉环记.avif" alt="金镯玉环记">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《金镯玉环记》经典片段</h3>
+                        <p>《金镯玉环记》通过信物引发的错位姻缘，展现命运巧合中的忠贞爱情，讴歌守信重义的传统美德。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1go4y1R7BA?t=1.0">
+                        <img src="状元打更.avif" alt="状元打更">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《状元打更》经典片段</h3>
+                        <p>《状元打更》通过落魄状元被迫打更的荒诞遭遇，讽刺世态炎凉与科举制度的虚妄，最终善恶有报、重获团圆。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1yE411b7jA?t=1.5">
+                        <img src="沂蒙情.avif" alt="沂蒙情">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《沂蒙情》经典片段</h3>
+                        <p>《沂蒙情》以红嫂乳汁救伤员的真实故事，讴歌沂蒙人民无私奉献精神，彰显军民鱼水情的革命大爱。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1Ma41137Aq?t=1.6">
+                        <img src="皮秀英四告.avif" alt="皮秀英四告">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>《皮秀英四告》经典片段</h3>
+                        <p>《皮秀英四告》通过女子皮秀英四次击鼓鸣冤的曲折经历，展现古代弱女子对抗强权的坚韧，揭露官场黑暗与司法不公。</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-player" data-video="https://www.bilibili.com/video/BV1KC4y1m7o1?t=1.3">
+                        <img src="张金兰.avif" alt="张金兰">
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>柳琴戏传承人——张金兰</h3>
+                        <p>致敬国家非遗传承人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <p></p>
+    <p style="text-align: center;"> 声明：部分视频来源为b站，如有侵权，还请联系删除。</p>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>关于我们</h2>
+                <p>柳韵传声社会实践团 - 致力于柳琴戏文化的保护与传播</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>柳韵传声社会实践团</h3>
+                    <p>我们是来自东南大学的学生团队，致力于通过社会实践的形式，保护和推广国家级非物质文化遗产——临沂柳琴戏。</p>
+                    <p>在本次社会实践中，我们深入走访柳琴戏老艺人，收集整理相关资料，制作了本网站以展示柳琴戏的艺术魅力，希望通过互联网让更多人了解和喜爱这一传统艺术形式。</p>
+                    
+                    <h3 style="margin-top: 25px;">团队成员</h3>
+                    <div class="team-members">
+                        <div class="member">姜瑞军</div>
+                        <div class="member">程子轩</div>
+                        <div class="member">李宝进</div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3>联系我们</h3>
+                        <p><i class="fas fa-phone"></i> 联系电话: 13589387065</p>
+                        <p><i class="fas fa-envelope"></i> 邮箱: 1771298383@qq.com 公众号：柳韵传声</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 地址: 山东省临沂市</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="team-logo">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>柳韵传声社会实践团</h3>
+                    <p style="margin-top: 15px; max-width: 300px;">保护文化遗产，传承柳琴艺术，我们在行动！</p>
+                    <div style="margin-top: 20px; font-size: 3rem; color: var(--secondary);">
+                        <i class="fas fa-music"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于团队</h3>
+                    <p>柳韵传声社会实践团是由东南大学学生组成的团队，致力于柳琴戏的保护与传承，推广这一国家级非物质文化遗产。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 首页</a></li>
+                        <li><a href="#plays"><i class="fas fa-chevron-right"></i> 经典剧目</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> 精彩剧照</a></li>
+                        <li><a href="#videos"><i class="fas fa-chevron-right"></i> 视频欣赏</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> 关于我们</a></li>
+                        
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>联系方式</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i>位置：山东省临沂市</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i>电话：13589387065</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> 邮箱：1771298382@qq.com</a></li>
+                        <li><a href="#"><i class="fab fa-weixin"></i> 微信公众号：柳韵传声</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 社会实践期间 9:00-18:00</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 柳韵传声社会实践团 | 临沂柳琴戏文化宣传项目</p>
+            </div>
+        </div>
+    </footer>
+ 
+    <!-- 图片模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn">&times;</span>
+        <div class="gallery-nav prev-btn"><i class="fas fa-chevron-left"></i></div>
+        <div class="gallery-nav next-btn"><i class="fas fa-chevron-right"></i></div>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+        <div class="thumbnail-container" id="thumbnailContainer"></div>
+    </div>
+
+    <script>
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 导航高亮效果
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // 图片图集数据
+        const gallerySets = {
+            costumes: [
+              
+            ],
+            performance: [
+            "舞台/1.jpg","舞台/2.jpg","舞台/3.jpg","舞台/4.jpg","舞台/5.jpg","舞台/6.jpg","舞台/7.jpg"
+            ],
+            makeup: [
+            "角色百态/7.png","角色百态/3.png","角色百态/1.jpg","角色百态/12.png","角色百态/2.jpg","角色百态/5.webp","角色百态/4.jpg","角色百态/8.png","角色百态/9.png",
+            "角色百态/13.png","角色百态/16.png"
+            ],
+            instruments: [
+               "乐器/1.jpg","乐器/2.jpg","乐器/3.avif","乐器/4.jpg"
+            ],
+            backstage: [
+                
+            ],
+            innovation: [
+                
+            ]
+        };
+        
+        // 图片模态框功能
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+        
+        let currentGallerySet = '';
+        let currentImageIndex = 0;
+        let galleryImages = [];
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // 获取点击图片的集合
+                const gallerySet = this.getAttribute('data-gallery');
+                currentGallerySet = gallerySet;
+                galleryImages = gallerySets[gallerySet];
+                
+                currentImageIndex = 0;
+                openImageModal();
+            });
+        });
+        
+        function openImageModal() {
+            modalImage.src = galleryImages[currentImageIndex];
+            renderThumbnails();
+            imageModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeImageModal() {
+            imageModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            modalImage.src = galleryImages[currentImageIndex];
+            updateThumbnailSelection();
+        }
+        
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            modalImage.src = galleryImages[currentImageIndex];
+            updateThumbnailSelection();
+        }
+        
+        function renderThumbnails() {
+            thumbnailContainer.innerHTML = '';
+            galleryImages.forEach((img, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'thumbnail';
+                if (index === currentImageIndex) {
+                    thumbnail.classList.add('active');
+                }
+                thumbnail.innerHTML = `<img src="${img}" alt="缩略图 ${index + 1}">`;
+                thumbnail.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    modalImage.src = galleryImages[currentImageIndex];
+                    updateThumbnailSelection();
+                });
+                thumbnailContainer.appendChild(thumbnail);
+            });
+        }
+        
+        function updateThumbnailSelection() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumbnail, index) => {
+                if (index === currentImageIndex) {
+                    thumbnail.classList.add('active');
+                } else {
+                    thumbnail.classList.remove('active');
+                }
+            });
+        }
+        
+        // 视频播放功能 - 在新标签页打开
+        const videoPlayers = document.querySelectorAll('.video-player');
+        
+        videoPlayers.forEach(player => {
+            player.addEventListener('click', function() {
+                const videoUrl = this.getAttribute('data-video');
+                window.open(videoUrl, '_blank');
+            });
+        });
+        
+        // 事件监听
+        closeBtn.addEventListener('click', closeImageModal);
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                closeImageModal();
+            }
+        });
+        
+        window.addEventListener('keydown', function(e) {
+            if (imageModal.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'Escape') {
+                    closeImageModal();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
